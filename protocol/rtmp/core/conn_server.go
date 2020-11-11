@@ -128,7 +128,9 @@ func (connServer *ConnServer) connect(vs []interface{}) error {
 				connServer.ConnInfo.TcUrl = tcurl.(string)
 			}
 			if encoding, ok := obimap["objectEncoding"]; ok {
-				connServer.ConnInfo.ObjectEncoding = int(encoding.(float64))
+				if encoding != nil {
+					connServer.ConnInfo.ObjectEncoding = int(encoding.(float64))
+				}
 			}
 		}
 	}
