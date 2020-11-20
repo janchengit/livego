@@ -159,7 +159,7 @@ func (f *FlvDvr) GetWriter(info av.Info) av.WriteCloser {
 		return nil
 	}
 
-	fileName := fmt.Sprintf("%s_%d.%s", path.Join(flvDir, info.Key), time.Now().Unix(), "flv")
+	fileName := fmt.Sprintf("%s_%s.%s", path.Join(flvDir, info.Key), time.Now().Format("2006-01-02-15-04-05"), "flv")
 	log.Debug("flv dvr save stream to: ", fileName)
 	w, err := os.OpenFile(fileName, os.O_CREATE|os.O_RDWR, 0755)
 	if err != nil {
